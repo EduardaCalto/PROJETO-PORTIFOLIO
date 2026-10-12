@@ -117,19 +117,14 @@ function initHeroField() {
   const hero = canvas.parentElement;
   const ctx = canvas.getContext('2d');
   const CHARS = '01{}[]<>/\\;:=+*#&%$';
-  const DENSE = '#$%&@';
   const CELL = 20;
-  const R = 150;                       // raio de influência do mouse
   const pick = (s) => s[(Math.random() * s.length) | 0];
 
-  let w = 0, h = 0, cols = 0, rows = 0, cells = [], colors = {};
+  let w = 0, h = 0, cols = 0, rows = 0, cells = [], color = '';
   let running = false, raf = 0, lastFrame = 0;
-  const target = { x: -999, y: -999 };
-  const pt = { x: -999, y: -999 };     // posição suavizada
 
   function readColors() {
-    const cs = getComputedStyle(root);
-    colors = { base: cs.getPropertyValue('--mute').trim(), accent: cs.getPropertyValue('--accent').trim() };
+    color = getComputedStyle(root).getPropertyValue('--mute').trim();
     if (!running) draw(performance.now());
   }
 
@@ -147,32 +142,18 @@ function initHeroField() {
 
   function draw(t) {
     ctx.clearRect(0, 0, w, h);
-    pt.x += (target.x - pt.x) * 0.12;
-    pt.y += (target.y - pt.y) * 0.12;
-
-    const hot = [];
-    ctx.fillStyle = colors.base;
+    ctx.fillStyle = color;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
         const i = r * cols + c;
-        const x = c * CELL + CELL / 2, y = r * CELL + CELL / 2;
-        const dx = x - pt.x, dy = y - pt.y;
-        const d = Math.hypot(dx, dy);
-        const f = Math.max(0, 1 - d / R);
-        if (Math.random() < 0.002 + f * 0.08) cells[i] = pick(f > 0.55 ? DENSE : CHARS);
-        if (f > 0) { hot.push([cells[i], x + (dx / (d || 1)) * f * 10, y + (dy / (d || 1)) * f * 10, f]); continue; }
+        if (Math.random() < 0.002) cells[i] = pick(CHARS);
         // onda diagonal lenta que atravessa o campo
         const wave = 0.5 + 0.5 * Math.sin(c * 0.18 + r * 0.12 - t / 900);
         const a = 0.05 + wave * wave * 0.22;
         if (a < 0.06) continue;
         ctx.globalAlpha = a;
-        ctx.fillText(cells[i], x, y);
+        ctx.fillText(cells[i], c * CELL + CELL / 2, r * CELL + CELL / 2);
       }
-    }
-    ctx.fillStyle = colors.accent;
-    for (const [ch, x, y, f] of hot) {
-      ctx.globalAlpha = 0.2 + f * 0.8;
-      ctx.fillText(ch, x, y);
     }
     ctx.globalAlpha = 1;
   }
@@ -185,12 +166,6 @@ function initHeroField() {
   }
   const start = () => { if (!running && !reduceMotion) { running = true; raf = requestAnimationFrame(loop); } };
   const stop = () => { running = false; cancelAnimationFrame(raf); };
-
-  hero.addEventListener('pointermove', (e) => {
-    const b = hero.getBoundingClientRect();
-    target.x = e.clientX - b.left; target.y = e.clientY - b.top;
-  });
-  hero.addEventListener('pointerleave', () => { target.x = target.y = pt.x = pt.y = -999; });
 
   new ResizeObserver(resize).observe(hero);
   new IntersectionObserver(([en]) => (en.isIntersecting ? start() : stop())).observe(hero);
