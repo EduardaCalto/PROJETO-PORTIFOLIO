@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Eduarda | Sistemas de Informação</title>
+  <meta name="description" content="Portfólio de Eduarda, estudante de Sistemas de Informação. Projetos em Java, JavaScript e bancos de dados.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* aplica o tema salvo antes de pintar a página (evita "piscar") */
+    try { const t = localStorage.getItem('tema'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}  </script>
+</head>
+<body>
+
+  <!-- MENU -->
+  <header class="top">
+    <div class="container top-in">
+      <a class="brand" href="#topo"><span class="brand-user">eduarda</span><span class="brand-at">@</span>portfolio<span class="brand-path">:~$</span></a>
+      <nav class="links" aria-label="Seções">
+        <a href="#sobre" data-en="about">sobre</a>
+        <a href="#projetos" data-en="projects">projetos</a>
+        <a href="#certificados" data-en="certificates">certificados</a>
+        <a href="#contato" data-en="contact">contato</a>
+      </nav>
+      <div class="top-actions">
+        <button id="lang" class="icon-btn" type="button" aria-label="Read in English">EN</button>
+        <button id="theme" class="icon-btn" type="button" aria-label="Alternar tema claro/escuro" data-en-label="Toggle light/dark theme">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9A9 9 0 0 0 12 3zm0 16V5a7 7 0 0 1 0 14z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- INÍCIO -->
+    <section class="hero" data-file="README.md">
+      <!-- campo de caracteres interativo (reage ao mouse) -->
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="container hero-in">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-en="open to software development internships">disponível para estágio em desenvolvimento</span></p>
+        <h1 id="hero-name" aria-label="Eduarda"><span class="name" aria-hidden="true">Eduarda</span><span class="caret" aria-hidden="true">_</span></h1>
+        <p class="role" data-en="Information Systems student · 3rd year">Estudante de Sistemas de Informação · 3º ano</p>
+        <p class="typed"><span class="t-gt" aria-hidden="true">&gt;</span> <span data-en="I write code in">escrevo código em</span> <span class="typed-word" id="typed-word" aria-hidden="true">C</span><span class="typed-cur" aria-hidden="true"></span><span class="sr-only">C, Java, JavaScript, Python e SQL</span></p>
+        <p class="lead" data-en="I've been programming for 4 years and I turn what I learn in college into software that works: from web apps with APIs to systems backed by databases.">Programo há 4 anos e transformo o que aprendo na faculdade em software que funciona: de aplicações web com APIs a sistemas com bancos de dados.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projetos" data-en="See projects">Ver projetos</a>
+          <a class="btn" href="curriculo/curriculo-eduarda.pdf" target="_blank" rel="noopener"><span data-en="Résumé">Currículo</span> <span aria-hidden="true">↗</span></a>
+        </div>
+        <dl class="facts">
+          <div><dt data-en="experience">experiência</dt><dd data-en="4 years">4 anos</dd></div>
+          <div><dt data-en="projects">projetos</dt><dd>2</dd></div>
+          <div><dt data-en="certifications">certificações</dt><dd>2</dd></div>
+        </dl>
+      </div>
+      <a class="hero-scroll" href="#sobre"><span data-en="scroll down">role para baixo</span> <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" data-file="sobre.md">
+      <div class="container">
+        <header class="sec-head">
+          <h2><span class="idx"></span><span data-en="About me">Sobre mim</span></h2>
+          <span class="path">~/eduarda/sobre.md</span>
+        </header>
+        <div class="split">
+          <div class="prose">
+            <p data-en="I'm a 3rd-year Information Systems student and I've been programming for 4 years. I like understanding how things work under the hood: data structures, processes, databases and the logic behind each system.">Sou estudante do 3º ano de Sistemas de Informação e programo há 4 anos. Gosto de entender como as coisas funcionam por baixo: estruturas de dados, processos, bancos e a lógica de cada sistema.</p>
+            <p data-en="In college and on my own, I apply this knowledge to projects that go from the back-end to the interface. I'm looking for a software development internship where I can learn from a team and deliver results.">Na faculdade e por conta própria, levo esse conhecimento para projetos que vão do back-end à interface. Estou em busca de um estágio em desenvolvimento para aprender com um time e entregar resultado.</p>
+          </div>
+          <div class="stack" role="table" aria-label="Tecnologias" data-en-label="Technologies">
+            <div class="stack-row stack-head" role="row">
+              <span role="columnheader" data-en="area">área</span><span role="columnheader" data-en="technologies">tecnologias</span>
+            </div>
+            <div class="stack-row" role="row">
+              <span role="cell">front-end</span>
+              <span role="cell"><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Bootstrap</li></ul></span>
+            </div>
+            <div class="stack-row" role="row">
+              <span role="cell">back-end</span>
+              <span role="cell"><ul class="tags"><li>Java</li><li>Python</li><li>C</li><li>Node.js</li></ul></span>
+            </div>
+            <div class="stack-row" role="row">
+              <span role="cell" data-en="data">dados</span>
+              <span role="cell"><ul class="tags"><li>SQL</li><li>MongoDB</li><li>Firebase</li><li>R</li></ul></span>
+            </div>
+            <div class="stack-row" role="row">
+              <span role="cell" data-en="tools">ferramentas</span>
+              <span role="cell"><ul class="tags"><li>Linux</li><li>Git</li></ul></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos" data-file="projetos/">
+      <div class="container">
+        <header class="sec-head">
+          <h2><span class="idx"></span><span data-en="Projects">Projetos</span></h2>
+          <span class="path">~/eduarda/projetos/</span>
+        </header>
+
+        <ol class="list">
+          <li class="item">
+            <span class="item-n">01</span>
+            <div class="item-main">
+              <h3 data-en="MP3 Music Library">Biblioteca de Músicas MP3</h3>
+              <p data-en="A small web system to store and search music files in MP3 format.">Mini sistema web para armazenar e buscar arquivos de música no formato MP3.</p>
+              <ul class="tags"><li>Java</li><li>MongoDB</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            </div>
+            <a class="item-link" href="https://playmysongs.onrender.com/" target="_blank">site <span aria-hidden="true">↗</span></a>
+          </li>
+
+          <li class="item">
+            <span class="item-n">02</span>
+            <div class="item-main">
+              <h3>Ride</h3>
+              <p data-en="A web app that shows your speed in km/h, the route you took and the places you passed through, using the browser's geolocation.">App web que mostra sua velocidade em km/h, o percurso feito e os lugares por onde você passou, usando a geolocalização do navegador.</p>
+              <ul class="tags"><li>JavaScript</li><li>APIs</li><li>HTML</li><li>CSS</li></ul>
+            </div>
+            <a class="item-link" href="https://projetoride.vercel.app/" target="_blank" rel="noopener">site <span aria-hidden="true">↗</span></a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CERTIFICADOS -->
+    <section id="certificados" data-file="certificados/">
+      <div class="container">
+        <header class="sec-head">
+          <h2><span class="idx"></span><span data-en="Certificates">Certificados</span></h2>
+          <span class="path">~/eduarda/certificados/</span>
+        </header>
+
+        <ul class="files">
+          <li>
+            <a href="certificados/robot-framework-2025.pdf" target="_blank" rel="noopener">
+              <span class="f-name">robot-framework<span class="f-ext">.pdf</span></span>
+              <span class="f-title">Robot Framework</span>
+              <span class="f-meta">Infoeste · 2025</span>
+              <span class="f-open" aria-hidden="true" data-en="open ↗">abrir ↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="certificados/cyber-security-2024.pdf" target="_blank" rel="noopener">
+              <span class="f-name">cyber-security<span class="f-ext">.pdf</span></span>
+              <span class="f-title">Cyber Security</span>
+              <span class="f-meta">Infoeste · 2024</span>
+              <span class="f-open" aria-hidden="true" data-en="open ↗">abrir ↗</span>
+            </a>
+          </li>
+          <!-- para adicionar um certificado, copie um <li> acima e troque o arquivo, título e ano -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" data-file="contato.sh">
+      <div class="container">
+        <header class="sec-head">
+          <h2><span class="idx"></span><span data-en="Contact">Contato</span></h2>
+          <span class="path">~/eduarda/contato.sh</span>
+        </header>
+        <div class="split">
+          <div class="prose">
+            <p data-en="Have an internship opening or a project? Send me a message and I'll reply within 2 days.">Tem uma vaga de estágio ou um projeto? Mande uma mensagem e eu respondo em até 2 dias.</p>
+            <p class="mono-note"><span data-en="# or download my"># ou baixe meu</span> <a href="curriculo/curriculo-eduarda.pdf" target="_blank" rel="noopener"><span data-en="résumé as PDF">currículo em PDF</span> ↗</a></p>
+          </div>
+          <form class="form" id="contact-form" novalidate>
+            <label for="n" data-en="--name">--nome</label>
+            <input id="n" autocomplete="name">
+            <label for="e">--email <span class="req" data-en="required">obrigatório</span></label>
+            <input id="e" type="email" autocomplete="email" required>
+            <label for="m"><span data-en="--message">--mensagem</span> <span class="req" data-en="required">obrigatório</span></label>
+            <textarea id="m" rows="5" required></textarea>
+            <div class="form-foot">
+              <button class="btn btn-primary" type="submit" id="send"><span data-en="Send message">Enviar mensagem</span> <span aria-hidden="true">↵</span></button>
+              <p id="ok" role="status"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="container foot-in">
+      <span>© 2026 Eduarda</span>
+      <span class="mono" data-en="handmade with HTML, CSS and JavaScript, no frameworks.">feito à mão com HTML, CSS e JavaScript, sem frameworks.</span>
+    </div>
+  </footer>
+
+  <!-- BARRA DE STATUS (estilo IDE) -->
+  <div class="statusbar" aria-hidden="true">
+    <span class="sb-item sb-accent"><span class="dot"></span><span data-en="open to internships">aberta a estágio</span></span>
+    <span class="sb-item hide-sm">⎇ main</span>
+    <span class="sb-item" id="sb-file">README.md</span>
+    <span class="sb-spacer"></span>
+    <span class="sb-item hide-sm">UTF-8</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
