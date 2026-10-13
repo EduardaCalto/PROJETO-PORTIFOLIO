@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- ícone do portfólio: "e_" (inicial de Eduarda + cursor) nas cores do site (fundo escuro + âmbar) -->
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="#0f1012" stroke="#2a2b2f" stroke-width="1.5"/>
+  <path d="M7 16 H18 A5.5 5.5 0 1 0 16.4 19.9" fill="none" stroke="#f5a524" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="20.3" y="19.8" width="5.2" height="2.8" rx="1" fill="#e8e6e1"/>
+</svg>
