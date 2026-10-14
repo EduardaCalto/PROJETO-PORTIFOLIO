@@ -246,6 +246,11 @@ function initStatusbar() {
   setInterval(tick, 15000);
 }
 
+/* ========== CONTADOR DE CERTIFICAÇÕES ========== */
+function initCertCount() {
+  $('#cert-count').textContent = document.querySelectorAll('#certificados .files li').length;
+}
+
 /* ========== INICIAR ========== */
 initTheme();
 initLang();
@@ -253,3 +258,4 @@ initContact();
 initHeroField();
 initHeroText();
 initStatusbar();
+initCertCount();
